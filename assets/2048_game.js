@@ -31,6 +31,8 @@ function initialization(){
             document.getElementById("grid").append(tile);
         }
     }
+    addNewTwo();
+    addNewTwo();
 }
 
 function updateTile(tile, number){
@@ -50,16 +52,21 @@ function updateTile(tile, number){
 document.addEventListener("keyup", (fleche) =>{
     if (fleche.code == "ArrowLeft"){
         slideLeft();
+        addNewTwo();
     }
-    if (fleche.code == "ArrowRight"){
+    else if (fleche.code == "ArrowRight"){
         slideRight();
+        addNewTwo();
     }
-    if (fleche.code == "ArrowUp"){
+    else if (fleche.code == "ArrowUp"){
         slideUp();
+        addNewTwo();
     }
-    if (fleche.code == "ArrowDown"){
+    else if (fleche.code == "ArrowDown"){
         slideDown();
+        addNewTwo();
     }
+    document.getElementById("score").innerText = score;
 })
 
 function filterZeros(row){
@@ -143,4 +150,35 @@ function slideDown(){
             updateTile(tile,number);
         }
     }
+}
+
+function addNewTwo(){
+    if (isFull()){
+        return;
+    }
+
+    let addedNewTwo = false;
+    while (!addedNewTwo){
+        let r = Math.floor(Math.random() * rows);
+        let c = Math.floor(Math.random() * columns);
+
+        if(grid[r][c] == 0){
+            grid[r][c] = 2;
+            let tile = document.getElementById(r.toString()+","+c.toString());
+            tile.innerText = "2";
+            tile.classList.add("tile2");
+            addedNewTwo = true;
+        }
+    }
+}
+
+function isFull(){
+    for(let r = 0; r < rows; r++){
+        for(let c = 0; c < columns; c++){
+            if(grid[r][c] == 0){
+                return false;
+            }
+        }
+    }
+    return true;
 }
