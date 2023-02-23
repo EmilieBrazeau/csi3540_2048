@@ -50,23 +50,24 @@ function updateTile(tile, number){
 }
 
 document.addEventListener("keyup", (fleche) =>{
+    let initialGrid = copyGrid(grid);
     if (fleche.code == "ArrowLeft"){
         slideLeft();
-        addNewTwo();
     }
-    else if (fleche.code == "ArrowRight"){
+    if (fleche.code == "ArrowRight"){
         slideRight();
-        addNewTwo();
     }
-    else if (fleche.code == "ArrowUp"){
+    if (fleche.code == "ArrowUp"){
         slideUp();
-        addNewTwo();
     }
-    else if (fleche.code == "ArrowDown"){
+    if (fleche.code == "ArrowDown"){
         slideDown();
-        addNewTwo();
     }
     document.getElementById("score").innerText = score;
+    
+    if(gridHasChanged(initialGrid,grid)){
+        addNewTwo();
+    }
 })
 
 function filterZeros(row){
@@ -91,6 +92,33 @@ function slide(row){
     }
 
     return row;
+}
+
+function gridHasChanged(initialGrid,finalGrid){
+    for(let r = 0; r < rows; r++){
+        for(let c = 0; c < columns; c++){
+            if(initialGrid[r][c] != finalGrid[r][c]){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+function copyGrid(grid){
+    let copy = [
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0]
+    ]
+    for(let c = 0; c < columns; c++){
+        for(let r = 0; r < rows; r++){
+            copy[r][c] = grid[r][c];
+        }
+    }
+    document.getElementById("score").innerText = copy[3][3];
+    return copy;
 }
 
 function slideLeft(){
