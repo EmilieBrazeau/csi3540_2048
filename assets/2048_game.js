@@ -54,6 +54,9 @@ document.addEventListener("keyup", (fleche) =>{
     if (fleche.code == "ArrowRight"){
         slideRight();
     }
+    if (fleche.code == "ArrowUp"){
+        slideUp();
+    }
 })
 
 function filterZeros(row){
@@ -103,6 +106,20 @@ function slideRight(){
         grid[r] = row;
 
         for (let c = 0; c < columns; c++){
+            let tile = document.getElementById(r.toString()+","+c.toString());
+            let number = grid[r][c];
+            updateTile(tile,number);
+        }
+    }
+}
+
+function slideUp(){
+    for (let c = 0; c < columns; c++){
+        let row = [grid[0][c], grid[1][c], grid[2][c], grid[3][c]];
+        row = slide(row);
+
+        for (let r = 0; r < rows; r++){
+            grid[r][c] = row[r];
             let tile = document.getElementById(r.toString()+","+c.toString());
             let number = grid[r][c];
             updateTile(tile,number);
