@@ -10,11 +10,11 @@ hr{
 }
 
 #grid{
-    width: 400px;
-    height: 400px;
+    width: 408px;
+    height: 408x;
 
     background-color: #474747;
-    border: 6px solid #858585;
+    border: 10px solid #858585;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -35,14 +35,14 @@ hr{
 .tile{
     width: 90px;
     height: 90px;
-    border: 5px solid #858585;
+    border: 6px solid #858585;
 
     font-size: 40px;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.5s ease;
+    transition: transform 0.5s linear;
 }
 
 /* Tile's colors palette: https://www.colorhexa.com/ffc0cb*/
