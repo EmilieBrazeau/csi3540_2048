@@ -8,19 +8,19 @@ window.onload = function(){
 }
 
 function initialization(){
-    // grid = [
-    //     [0,0,0,0],
-    //     [0,0,0,0],
-    //     [0,0,0,0],
-    //     [0,0,0,0]
-    // ]
-    
     grid = [
-        [2,2,2,2],
-        [2,2,2,2],
-        [4,4,8,8],
-        [4,4,8,8]
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0]
     ]
+    
+    // grid = [
+    //     [2,2,2,2],
+    //     [2,2,2,2],
+    //     [4,4,8,8],
+    //     [4,4,8,8]
+    // ]
 
     for(let r = 0; r < rows; r++){
         for(let c = 0; c < columns; c++){
@@ -56,6 +56,9 @@ document.addEventListener("keyup", (fleche) =>{
     }
     if (fleche.code == "ArrowUp"){
         slideUp();
+    }
+    if (fleche.code == "ArrowDown"){
+        slideDown();
     }
 })
 
@@ -118,6 +121,21 @@ function slideUp(){
         let row = [grid[0][c], grid[1][c], grid[2][c], grid[3][c]];
         row = slide(row);
 
+        for (let r = 0; r < rows; r++){
+            grid[r][c] = row[r];
+            let tile = document.getElementById(r.toString()+","+c.toString());
+            let number = grid[r][c];
+            updateTile(tile,number);
+        }
+    }
+}
+
+function slideDown(){
+    for (let c = 0; c < columns; c++){
+        let row = [grid[0][c], grid[1][c], grid[2][c], grid[3][c]];
+        row.reverse();
+        row = slide(row);
+        row.reverse();
         for (let r = 0; r < rows; r++){
             grid[r][c] = row[r];
             let tile = document.getElementById(r.toString()+","+c.toString());
