@@ -1,6 +1,8 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    background-color: black;
+    color: white;
 }
 
 hr{
@@ -11,88 +13,100 @@ hr{
     width: 400px;
     height: 400px;
 
-    background-color: #ffe7eb;
-    border: 6px solid #33030b;
-
+    background-color: #474747;
+    border: 6px solid #858585;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
 }
 
-.tile{
+/* .tile{
     width: 90px;
     height: 90px;
-    border: 5px solid #33030b;
+    border: 5px solid #ff99ab;
 
     font-size: 40px;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
+} */
+
+.tile{
+    width: 90px;
+    height: 90px;
+    border: 5px solid #858585;
+
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
 }
 
 /* Tile's colors palette: https://www.colorhexa.com/ffc0cb*/
 .tile2{
-    background-color: #fffbfc;
-    color: #ff0f39;
+    background-color: #ffd4db;
+    color: #ff5e7a;
 }
 
 .tile4{
-    background-color: #ffe7eb;
-    color: #ff0f39;
+    background-color: #ffacbb;
+    color: #ff375a;
 }
 
 .tile8{
-    background-color: #ffd4db;
-    color: #ff0f39;
-}
-
-.tile16{
-    background-color: #ffc0cb;
-    color: white;
-}
-
-.tile32{
-    background-color: #ffacbb;
-    color: white;
-}
-
-.tile64{
-    background-color: #ff99ab;
-    color: white;
-}
-
-.tile128{
     background-color: #ff859a;
     color: white;
 }
 
-.tile256{
-    background-color: #ff728a;
-    color: white;
-}
-
-.tile512{
+.tile16{
     background-color: #ff5e7a;
     color: white;
 }
 
-.tile1024{
-    background-color: #ff4a6a;
-    color: white;
-}
-
-.tile2048{
+.tile32{
     background-color: #ff375a;
     color: white;
 }
 
-.tile4096{
-    background-color: #ff2349;
+.tile64{
+    background-color: #ff0f39;
     color: white;
 }
 
-.tile8192{
-    background-color: #ff0f39;
+.tile128{
+    background-color: #d40025;
     color: white;
+}
+
+.tile256{
+    background-color: #99001b;
+    color: white;
+}
+
+.tile512{
+    background-color: #4a000d;
+    color: white;
+}
+
+.tile1024{
+    background-color: #0f0003;
+    color: white;
+}
+
+.tile2048{
+    background: linear-gradient(to bottom right, #ff8b94,  #ffb3ba, #ffdfba, #ffffba, #baffc9, #a8e6cf, #bae1ff, #dbdcff,  #eecbff);
+    color: #474747;
+}
+
+.tile4096{
+    background-color: #eecbff;
+    color: #474747;
+}
+
+.tile8192{
+    background-color: #a8e6cf;
+    color: #474747;
 }
