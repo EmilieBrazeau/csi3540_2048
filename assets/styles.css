@@ -1,0 +1,98 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+hr{
+    width: 500px;
+}
+
+#grid{
+    width: 400px;
+    height: 400px;
+
+    background-color: #ffe7eb;
+    border: 6px solid #33030b;
+
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tile{
+    width: 90px;
+    height: 90px;
+    border: 5px solid #33030b;
+
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Tile's colors palette: https://www.colorhexa.com/ffc0cb*/
+.tile2{
+    background-color: #fffbfc;
+    color: #ff0f39;
+}
+
+.tile4{
+    background-color: #ffe7eb;
+    color: #ff0f39;
+}
+
+.tile8{
+    background-color: #ffd4db;
+    color: #ff0f39;
+}
+
+.tile16{
+    background-color: #ffc0cb;
+    color: white;
+}
+
+.tile32{
+    background-color: #ffacbb;
+    color: white;
+}
+
+.tile64{
+    background-color: #ff99ab;
+    color: white;
+}
+
+.tile128{
+    background-color: #ff859a;
+    color: white;
+}
+
+.tile256{
+    background-color: #ff728a;
+    color: white;
+}
+
+.tile512{
+    background-color: #ff5e7a;
+    color: white;
+}
+
+.tile1024{
+    background-color: #ff4a6a;
+    color: white;
+}
+
+.tile2048{
+    background-color: #ff375a;
+    color: white;
+}
+
+.tile4096{
+    background-color: #ff2349;
+    color: white;
+}
+
+.tile8192{
+    background-color: #ff0f39;
+    color: white;
+}
