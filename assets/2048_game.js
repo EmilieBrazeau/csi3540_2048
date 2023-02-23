@@ -51,6 +51,9 @@ document.addEventListener("keyup", (fleche) =>{
     if (fleche.code == "ArrowLeft"){
         slideLeft();
     }
+    if (fleche.code == "ArrowRight"){
+        slideRight();
+    }
 })
 
 function filterZeros(row){
@@ -85,7 +88,23 @@ function slideLeft(){
 
         for (let c = 0; c < columns; c++){
             let tile = document.getElementById(r.toString()+","+c.toString());
-            let number = board[r][c];
+            let number = grid[r][c];
+            updateTile(tile,number);
+        }
+    }
+}
+
+function slideRight(){
+    for(let r = 0; r < rows; r++){
+        let row = grid[r];
+        row.reverse();
+        row = slide(row);
+        row.reverse();
+        grid[r] = row;
+
+        for (let c = 0; c < columns; c++){
+            let tile = document.getElementById(r.toString()+","+c.toString());
+            let number = grid[r][c];
             updateTile(tile,number);
         }
     }
