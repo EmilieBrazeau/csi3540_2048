@@ -13,11 +13,58 @@ hr{
     width: 408px;
     height: 408x;
 
-    background-color: #474747;
-    border: 10px solid #858585;
+    background-color: #323232;
+    border: 10px solid #515151;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+}
+
+.popup{
+    width: 300px;
+    background: black;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: white;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+
+.open-popup{
+    visibility: visible;
+    top: 40%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup h2{
+    font-size: 38px;
+    font-weight: 500;
+    margin: 30px 0 10px;
+}
+
+.popup button{
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #ff5e7a;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.popup span{
+    font-size: 35px;
+    font-weight: bolder;
+    color: #ffacbb;
 }
 
 /* .tile{
@@ -35,7 +82,7 @@ hr{
 .tile{
     width: 90px;
     height: 90px;
-    border: 6px solid #858585;
+    border: 6px solid #515151;
 
     font-size: 40px;
     font-weight: bold;
@@ -77,36 +124,37 @@ hr{
 }
 
 .tile128{
-    background-color: #d40025;
+    background-color: #a7d8fd;
     color: white;
 }
 
 .tile256{
-    background-color: #99001b;
+    background-color: #33a1f6;
     color: white;
 }
 
 .tile512{
-    background-color: #4a000d;
+    background-color: #4fb48f;
     color: white;
 }
 
 .tile1024{
-    background-color: #0f0003;
+    background-color: #ba7cda;
     color: white;
 }
 
 .tile2048{
     background: linear-gradient(to bottom right, #ff8b94,  #ffb3ba, #ffdfba, #ffffba, #baffc9, #a8e6cf, #bae1ff, #dbdcff,  #eecbff);
-    color: #474747;
+    color: white;
 }
 
 .tile4096{
-    background-color: #eecbff;
-    color: #474747;
+    background-color: #e1aefa;
+    color: white;
 }
 
 .tile8192{
-    background-color: #a8e6cf;
-    color: #474747;
+    background-color: #73e0b8;
+    color: white;
 }
+
