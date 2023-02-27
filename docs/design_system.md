@@ -28,38 +28,30 @@
 
 
 ## Fonts
-<h1 style="font-size: 30px;  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+<h1 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
     Heading 1 with tag "h1"
 </h1>
 
-<hr>
-<h2 style="text-shadow: 3px 3px 3px #ecf0f1;  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+
+<h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
     Heading 2 with tag "h2"
 </h2>
-<span>
-Note: H2s are previoused and followed by an horizontal line "hr"</span>
-<hr>
-
-<h3 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-    Heading 3 with tag "h3"
-</h3>
 
 <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
     Paragraph with tag "p"
 </p>
 
-<span style="color:rgb(71, 78, 85);">
-Span in Header
+<span style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bolder; background-color: #ffacbb; color: #ff375a;">
+    Span with tag "span" in popup
 </span>
+
+<span style="color:rgb(71, 78, 85);">
 <br>
 <br>
 
 ## Buttons
-<div style="text-decoration: underline; color: white;">
-Buttons with tag "ul li a"
-</div>
-<span style="background-color: #b889ed; color: white;">
-Buttons with tag "ul li : hover" - on hover
+<span style="background-color: #ff5e7a; color: white;">
+Buttons with tag ".popup button"
 </span>
 <br>
 <br>
