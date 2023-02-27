@@ -2,25 +2,26 @@ let grid;
 let score = 0;
 let columns = 4;
 let rows = 4;
+let won = false;
 
 window.onload = function(){
     initialization();
 }
 
 function initialization(){
-    // grid = [
-    //     [0,0,0,0],
-    //     [0,0,0,0],
-    //     [0,0,0,0],
-    //     [0,0,0,0]
-    // ]
-    
     grid = [
-        [2,4,8,16],
-        [32,64,128,256],
-        [512,1024,2048,4096],
-        [8192,4,2,0]
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0]
     ]
+    
+    // grid = [
+    //     [2,4,8,16],
+    //     [32,64,128,256],
+    //     [512,1024,1024,4096],
+    //     [8192,4,2,0]
+    // ]
 
     for(let r = 0; r < rows; r++){
         for(let c = 0; c < columns; c++){
@@ -87,27 +88,31 @@ function isOver(){
     return true;
 }
 
-// function reset(finalGrid){
-//     grid = finalGrid;
-//     for(let r = 0; r<rows; r++){
-//         for(letc = 0; c<columns; c++){
-//             let tile = document.getElementById(r.toString()+","+c.toString());
-//             let number = grid[r][c];
-//             updateTile(tile,number);
-//         }
-//     }
-// }
-
 function gameOver(){
-    let popup = document.getElementById("popup");
+    let popup = document.getElementById("popupGameOver");
     let backdrop = document.getElementById("backdrop");
     popup.classList.add("open-popup");
     document.getElementById("scorePopup").innerText = score;
     backdrop.classList.add('blur');
 }
 
-function tryAgain(){
-    let popup = document.getElementById("popup");
+function gameWon(){
+    let popup = document.getElementById("popupWon");
+    let backdrop = document.getElementById("backdrop");
+    popup.classList.add("open-popup");
+    backdrop.classList.add('blur');
+}
+
+function continuePlaying(){
+    let popup = document.getElementById("popupWon");
+    popup.classList.remove("open-popup");
+
+    let backdrop = document.getElementById("backdrop");
+    backdrop.classList.remove('blur');
+}
+
+function tryAgain(popupName){
+    let popup = document.getElementById(popupName);
     let backdrop = document.getElementById("backdrop");
     
     grid = [
@@ -125,7 +130,7 @@ function tryAgain(){
             tile.classList.add("tile");
         }
     }
-
+    score = 0;
     document.getElementById("scorePopup").innerText = 0;
     document.getElementById("score").innerText = score;
     addNewTwo();
@@ -147,6 +152,10 @@ function slide(row){
             row[i] *= 2;
             row[i+1] = 0;
             score += row[i];
+            if(row[i] == 2048 && !won){
+                won = true;
+                gameWon();
+            }
         }
     }
 

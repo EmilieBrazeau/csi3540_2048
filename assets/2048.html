@@ -14,11 +14,16 @@
             <h2>Score: <span id="score">0</span></h2>
             <div id="grid"></div>
         </div>
-        <div class = "popup" id="popup">
+        <div class = "popup" id="popupGameOver">
             <h2>Game over!</h2>
             <p>Your score :</p>
             <span id="scorePopup"></span>
-            <button type = "button" onclick="tryAgain()">Try again</button>
+            <button type = "button" onclick="tryAgain('popupGameOver')">Try again</button>
+        </div>
+        <div class = "popup" id="popupWon">
+            <h2>You won!</h2>
+            <div><button type = "button" onclick="tryAgain('popupWon')">Restart</button></div>
+            <div><button type = "button" onclick="continuePlaying()">Continue playing</button></div>
         </div>
     </body>
 </html>
