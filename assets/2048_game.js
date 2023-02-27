@@ -32,8 +32,8 @@ function initialization(){
             document.getElementById("grid").append(tile);
         }
     }
-    addNewTwo();
-    addNewTwo();
+    addNewTile(2);
+    addNewTile(2);
 }
 
 function updateTile(tile, number){
@@ -67,7 +67,13 @@ document.addEventListener("keyup", (fleche) =>{
     document.getElementById("score").innerText = score;
     
     if(gridHasChanged(initialGrid,grid)){
-        addNewTwo();
+        let random = Math.random();
+        if(random < 0.9){
+            addNewTile(2);
+        }
+        else{
+            addNewTile(4);
+        }
         if(isFull() && isOver()){
             gameOver();
         }
@@ -133,8 +139,8 @@ function tryAgain(popupName){
     score = 0;
     document.getElementById("scorePopup").innerText = 0;
     document.getElementById("score").innerText = score;
-    addNewTwo();
-    addNewTwo();
+    addNewTile(2);
+    addNewTile(2);
 
     popup.classList.remove("open-popup");
     backdrop.classList.remove('blur');
@@ -253,22 +259,22 @@ function slideDown(){
     }
 }
 
-function addNewTwo(){
+function addNewTile(number){
     if (isFull()){
         return;
     }
 
-    let addedNewTwo = false;
-    while (!addedNewTwo){
+    let addedNewTile = false;
+    while (!addedNewTile){
         let r = Math.floor(Math.random() * rows);
         let c = Math.floor(Math.random() * columns);
 
         if(grid[r][c] == 0){
             grid[r][c] = 2;
             let tile = document.getElementById(r.toString()+","+c.toString());
-            tile.innerText = "2";
-            tile.classList.add("tile2");
-            addedNewTwo = true;
+            tile.innerText = number.toString();
+            tile.classList.add("tile"+number.toString());
+            addedNewTile = true;
         }
     }
 }
