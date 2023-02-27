@@ -8,16 +8,17 @@
         <script src="2048_game.js"></script>
     </head>
     <body>
-        <h1>2048</h1>
-        <hr>
-        <h2>Score: <span id="score">0</span></h2>
-        <div id="grid">
-            <div class = "popup" id="popup">
-                <h2>Game over!</h2>
-                <p>Your score :</p>
-                <span id="scorePopup"></span>
-                <button type = "button" onclick="tryAgain()">Try again</button>
-            </div>
+        <div id="backdrop">
+            <h1>2048</h1>
+            <hr>
+            <h2>Score: <span id="score">0</span></h2>
+            <div id="grid"></div>
+        </div>
+        <div class = "popup" id="popup">
+            <h2>Game over!</h2>
+            <p>Your score :</p>
+            <span id="scorePopup"></span>
+            <button type = "button" onclick="tryAgain()">Try again</button>
         </div>
     </body>
 </html>

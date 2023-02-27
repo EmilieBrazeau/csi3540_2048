@@ -8,19 +8,19 @@ window.onload = function(){
 }
 
 function initialization(){
-    grid = [
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0]
-    ]
-    
     // grid = [
-    //     [2,4,8,16],
-    //     [32,64,128,256],
-    //     [512,1024,2048,4096],
-    //     [8192,4,,0]
+    //     [0,0,0,0],
+    //     [0,0,0,0],
+    //     [0,0,0,0],
+    //     [0,0,0,0]
     // ]
+    
+    grid = [
+        [2,4,8,16],
+        [32,64,128,256],
+        [512,1024,2048,4096],
+        [8192,4,2,0]
+    ]
 
     for(let r = 0; r < rows; r++){
         for(let c = 0; c < columns; c++){
@@ -67,8 +67,73 @@ document.addEventListener("keyup", (fleche) =>{
     
     if(gridHasChanged(initialGrid,grid)){
         addNewTwo();
+        if(isFull() && isOver()){
+            gameOver();
+        }
     }
 })
+
+function isOver(){
+    let board = copyGrid(grid);
+    for (let i = 0; i < rows; i++){
+        let currentRow = board[i];
+        let currentColumn = [grid[0][i], grid[1][i], grid[2][i], grid[3][i]];
+        for(let c = 0; c < currentRow.length - 1; c++){
+            if(currentRow[c] == currentRow[c+1] || currentColumn[c] == currentColumn[c+1]){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+// function reset(finalGrid){
+//     grid = finalGrid;
+//     for(let r = 0; r<rows; r++){
+//         for(letc = 0; c<columns; c++){
+//             let tile = document.getElementById(r.toString()+","+c.toString());
+//             let number = grid[r][c];
+//             updateTile(tile,number);
+//         }
+//     }
+// }
+
+function gameOver(){
+    let popup = document.getElementById("popup");
+    let backdrop = document.getElementById("backdrop");
+    popup.classList.add("open-popup");
+    document.getElementById("scorePopup").innerText = score;
+    backdrop.classList.add('blur');
+}
+
+function tryAgain(){
+    let popup = document.getElementById("popup");
+    let backdrop = document.getElementById("backdrop");
+    
+    grid = [
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0]
+    ]
+
+    for(let r = 0; r < rows; r++){
+        for(let c = 0; c< columns; c++){
+            let tile = document.getElementById(r.toString()+","+c.toString());
+            tile.innerText = "";
+            tile.classList.value = "";
+            tile.classList.add("tile");
+        }
+    }
+
+    document.getElementById("scorePopup").innerText = 0;
+    document.getElementById("score").innerText = score;
+    addNewTwo();
+    addNewTwo();
+
+    popup.classList.remove("open-popup");
+    backdrop.classList.remove('blur');
+}
 
 function filterZeros(row){
     return row.filter(number => number != 0);
@@ -117,7 +182,6 @@ function copyGrid(grid){
             copy[r][c] = grid[r][c];
         }
     }
-    document.getElementById("score").innerText = copy[3][3];
     return copy;
 }
 
