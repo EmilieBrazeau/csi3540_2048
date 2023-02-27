@@ -57,3 +57,7 @@ Buttons with tag ".popup button"
 <br>
 
 ## UI components
+<img src=https://github.com/EmilieBrazeau/csi3540_2048/blob/main/assets/design_system/2048-grid.jpg width = 60%>
+<img src=https://raw.githubusercontent.com/EmilieBrazeau/csi3540_2048/main/assets/design_system/2048-won.jpg width = 60%>
+2048 won")
+
