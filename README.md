@@ -6,8 +6,10 @@
 ## Instructions and objective
 Join numbers to get to the 2048 tile! Use arrow keys to move the tiles. When two tiles having the same number touch, they join into one.
 
-For example, assume we have the board below.
-<img src="/docs/initialState.jpg" width="50%"/>
+For example, assume we have the board on the left-hand side. By clicking on the left arrow keyboard, all rows will slide left and we will obtain the board on the right-hand side.
+</br>
+<img src="/docs/initialState.jpg" width="40%"/>
+<img src="/docs/finalState.jpg" width="40%"/>
 
 ## Documentation
 I 
