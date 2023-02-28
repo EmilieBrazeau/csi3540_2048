@@ -45,8 +45,6 @@
 <span style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bolder; background-color: #ffacbb; color: #ff375a;">
     Span with tag "span" in popup
 </span>
-
-<span style="color:rgb(71, 78, 85);">
 <br>
 <br>
 
@@ -58,6 +56,15 @@ Buttons with tag ".popup button"
 <br>
 
 ## UI components
-<img src=https://github.com/EmilieBrazeau/csi3540_2048/blob/main/assets/design_system/2048-grid.jpg width = 60%>
-<img src=https://raw.githubusercontent.com/EmilieBrazeau/csi3540_2048/main/assets/design_system/2048-won.jpg width = 60%>
+The implementation of the header, the scoreboard and the board was simple. All of them were included in a "div" with an unique id "backdrop" because when a player wins, a pop-up appears and the background (this content) blurs. For the title, "h1" was used and for the score, "h2" was used. The latter also included a span with an unique id to be able to update the score whenever tiles merge.
+<br>
+<br>
+<img src=/docs/design_system/2048-grid.jpg width = 40%>
+<br>
+<br>
+As previously mentioned, a pop-up appears when a player wins. In the JavaScript, there is a function called gameWon() that makes the pop-up visible (because it was set to "hidden" before that trigger). This function is called whenever the number 2048 is added to the score and that the game has not already been won (in case someone plays beyond their victory and reaches 2048 again). The two buttons have "onClick" features and calls the corresponding function to either continue playing (simply close pop-up) or restart (close pop-up and reinitialise the board).
+<br>
+<br>
+A similar pop-up appears whenever the board is completely full and no sliding can be done anymore. The only option is to restart.
+<img src=/docs/design_system/2048-won.jpg width = 40%>
 
