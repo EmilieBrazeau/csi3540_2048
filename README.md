@@ -15,9 +15,9 @@ For example, assume we have the board on the left-hand side. By clicking on the 
 </br>
 Also, everytime the board changes from a slide, a new tile is added: a "2" is added 90% of the time and a "4" is added 10% of the time. In this specific case, a "4" was added and it's the one from the top row.
 </br>
-<img src="/docs/initialState.jpg" width="40%"/>
+<img src="/docs/design_system/initialState.jpg" width="40%"/>
 <span>          </span>
-<img src="/docs/finalState.jpg" width="40%"/>
+<img src="/docs/design_system/finalState.jpg" width="40%"/>
 </br> Once you win, you will have a pop-up that will give you the choice of restarting a new game or continue playing.
 <img src="/docs/design_system/2048-won.jpg" width="40%"/>
 
