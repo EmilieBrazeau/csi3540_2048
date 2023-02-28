@@ -7,7 +7,7 @@
 Join numbers to get to the 2048 tile! Use arrow keys to move the tiles. When two tiles having the same number touch, they join into one.
 
 For example, assume we have the board below.
-<img src="/docs/initialState.jpg" width="20"/>
+<img src="/docs/initialState.jpg" width="50%"/>
 
 ## Documentation
 I 
