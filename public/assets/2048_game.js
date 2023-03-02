@@ -270,7 +270,7 @@ function addNewTile(number){
         let c = Math.floor(Math.random() * columns);
 
         if(grid[r][c] == 0){
-            grid[r][c] = 2;
+            grid[r][c] = number;
             let tile = document.getElementById(r.toString()+","+c.toString());
             tile.innerText = number.toString();
             tile.classList.add("tile"+number.toString());
