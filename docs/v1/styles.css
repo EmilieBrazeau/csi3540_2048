@@ -1,0 +1,173 @@
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+
+hr{
+    width: 500px;
+}
+
+#grid{
+    width: 408px;
+    height: 408x;
+
+    background-color: #323232;
+    border: 10px solid #515151;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.blur{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    filter: blur(5px);
+}
+
+.popup{
+    width: 300px;
+    background: #ffacbb;
+    border-style: inset;
+    border-color: black;
+    border-width: 5px;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: white;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+
+.open-popup{
+    visibility: visible;
+    top: 45%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup h2{
+    font-size: 38px;
+    font-weight: 500;
+    margin: 30px 0 10px;
+}
+
+.popup button{
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #ff5e7a;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.popup span{
+    font-size: 35px;
+    font-weight: bolder;
+    color: #ff375a;
+}
+
+/* .tile{
+    width: 90px;
+    height: 90px;
+    border: 5px solid #ff99ab;
+
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.tile{
+    width: 90px;
+    height: 90px;
+    border: 6px solid #515151;
+
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s linear;
+}
+
+/* Tile's colors palette: https://www.colorhexa.com/ffc0cb*/
+.tile2{
+    background-color: #ffd4db;
+    color: #ff5e7a;
+}
+
+.tile4{
+    background-color: #ffacbb;
+    color: #ff375a;
+}
+
+.tile8{
+    background-color: #ff859a;
+    color: white;
+}
+
+.tile16{
+    background-color: #ff5e7a;
+    color: white;
+}
+
+.tile32{
+    background-color: #ff375a;
+    color: white;
+}
+
+.tile64{
+    background-color: #ff0f39;
+    color: white;
+}
+
+.tile128{
+    background-color: #a7d8fd;
+    color: #043a63;
+}
+
+.tile256{
+    background-color: #33a1f6;
+    color: white;
+}
+
+.tile512{
+    background-color: #4fb48f;
+    color: white;
+}
+
+.tile1024{
+    background-color: #ba7cda;
+    color: white;
+}
+
+.tile2048{
+    background: linear-gradient(to bottom right, #ff8b94,  #ffb3ba, #ffdfba, #ffffba, #baffc9, #a8e6cf, #bae1ff, #dbdcff,  #eecbff);
+    color: white;
+}
+
+.tile4096{
+    background-color: #e1aefa;
+    color: white;
+}
+
+.tile8192{
+    background-color: #73e0b8;
+    color: white;
+}
+
