@@ -20,10 +20,25 @@ function html_tile($tileid){
 		}
 	}
 }
+
+function html_score($tileid){
+	if(!isset($_GET[$tileid])){
+		return '<div class="points">0</div>';
+	}
+	$tilevalue = $_GET[$tileid];
+	return '<div class="points">'.$tilevalue.'</div>';
+}
+
 /* gettiles : returns the GET values of tiles in a get string
 (void) -> (String) */
 function gettiles(){
 	$string = "c11=".$_GET["c11"]."&c12=".$_GET["c12"]."&c13=".$_GET["c13"]."&c14=".$_GET["c14"]."&c21=".$_GET["c21"]."&c22=".$_GET["c22"]."&c23=".$_GET["c23"]."&c24=".$_GET["c24"]."&c31=".$_GET["c31"]."&c32=".$_GET["c32"]."&c33=".$_GET["c33"]."&c34=".$_GET["c34"]."&c41=".$_GET["c41"]."&c42=".$_GET["c42"]."&c43=".$_GET["c43"]."&c44=".$_GET["c44"]."" ;
+	return $string;
+}
+
+function getscore($score){
+	$string = $_GET["$score"];
+	console.log($string);
 	return $string;
 }
 
@@ -159,7 +174,7 @@ function line_move($v1,$v2,$v3,$v4){
 		$v2 = $v2 * 2 ;
 		$v1 = 0 ;
 	}
-	$ret = [ 1 => $v1 , 2 => $v2 , 3 => $v3 , 4 => $v4 ] ;
+	$ret = [ 1 => $v1 , 2 => $v2 , 3 => $v3 , 4 => $v4 ];
 	return $ret ;
 }
 /* getmoveresult : Return the GET values using the existing ones moved to a set direction.
@@ -282,21 +297,26 @@ function canplay(){
 }
 /* randomstart : returns a random GET url to start the game on 10 templates (Cuz i'm lazy...)
 (void) -> (String) */
-function randomstart(){
+function randomstart($indice){
 	$randompos1 = rand(0,15);
 	$randompos2 = rand(0,15);
 	$pos = 0;
 	while($randompos1 == $randompos2){
 		$randompos2 = rand(0,15);
 	}
-	$initialGrid = "Location:game2048.php?score=0&c";
+	if($indice == 0){
+		$initialGrid = "Location:game2048.php?score=0&s1=0&s2=0&s3=0&c";
+	}
+	else{
+		$initialGrid = "c";
+	}
 	for($for_1=1;$for_1<=4;$for_1++){
 		for($for_2=1;$for_2<=4;$for_2++){
 			if($pos == $randompos1 || $pos == $randompos2){
 				$initialGrid = $initialGrid.$for_1.$for_2."=2&c";
 			}
 			else{
-				$initialGrid = $initialGrid.$for_1.$for_2."=0&c";
+				$initialGrid = $initialGrid.$for_1.$for_2."=".$for_1."&c";
 			}
 			if($pos == 15){
 				$finalGrid = substr($initialGrid, 0, -2);
@@ -312,13 +332,28 @@ function randomstart(){
 function haswon(){
 	for($for_1=1;$for_1<=4;$for_1++){
 		for($for_2=1;$for_2<=4;$for_2++){
-			if ($_GET["c".$for_1.$for_2] >= 2048 ){
+			if ($_GET["c".$for_1.$for_2] == 2048){
 				return true;
 			}
 		}
 	}
 	return false;
 }
+
+function haslost(){
+	if(!isFull()){
+		return false;
+	}
+	for($for_1=1;$for_1<=4;$for_1++){
+		for($for_2=1;$for_2<4;$for_2++){
+			if ($_GET["c".$for_1.$for_2] == $_GET["c".$for_1.($for_2+1)] || $_GET["c".$for_2.$for_1] == $_GET["c".($for_2+1).$for_1]){
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
 /* hasvoid (predicate): returns if the current grid has at least 1 empty space.
 (void) -> (boolean)*/
 function hasvoid(){
@@ -389,45 +424,44 @@ function lm_score($row){
 <?php
 /*Redirects the user with the appropriate GET values if needed.*/
 if(!isset($_GET["score"])){
-	header(randomstart());
+	header(randomstart(0));
 	exit();
 }
 /*Spawns a tile if the user moved*/
 if(isset($_GET["move"])){
-	header("Location:game2048.php?score=".$_GET["score"]."&".addNewTile()) ;
+	header("Location:game2048.php?score=".$_GET["score"]."&s1=".$_GET["s1"]."&s2=".$_GET["s2"]."&s3=".$_GET["s3"]."&".addNewTile()) ;
 	exit();
 }
 
+if(isset($_GET["won"])){
+	header("Location:game2048.php?score=".$_GET["score"]."&s1=".$_GET["s1"]."&s2=".$_GET["s2"]."&s3=".$_GET["s3"]."&".gettiles()) ;
+	exit();
+}
 
 ?>
 <!Doctype html>
 <html>
-<head>
-	<meta charset="UTF-8"/>
-	<title>
-		2048 in php
-	</title>
-	<link type="text/css" rel="stylesheet" href="styles.css">
-	<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
-	
-</head>
-<body>
-	<header class="main">
-		<h1>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>
 			2048 in php
-		</h1>
-		</header>
-			<span class="score">
-				score :
-				<?php echo($_GET["score"]) ; ?>
-			</span>
-			<span class="new">
-				<a href="game2048.php">New game</a>
-			</span>
-		</header>
-		<br/>
-		<body>
-			<div class="grid">
+		</title>
+		<link type="text/css" rel="stylesheet" href="styles.css">
+		<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+		<!-- <script src="game2048.js"></script> -->
+	</head>
+	<body>
+		<div class="main">
+			<h1>
+				2048 in php
+			</h1>
+			<h2 class="score">
+				Score : <?php echo($_GET["score"]) ; ?>
+			</h2>
+			<a href="game2048.php">New game</a>
+		</div>
+		<span id = "backdrop">
+			<span class="grid">
 				<table>
 					<tr>
 						<th class="g"><?php echo(html_tile("c11")) ;?></th>
@@ -454,73 +488,99 @@ if(isset($_GET["move"])){
 						<th class="g"><?php echo(html_tile("c44")) ;?></th>
 					</tr>
 				</table>
-			</div>
+			</span>
+			<span class="sub lboard_section">
+				<h1>How to play</h1>
+				<br/>
+				<h2 style="color: black">Join numbers to get to the 2048 tile!</h2>
+				<p style="color: black">Use arrow keys to move the tiles.
+					<br> When two tiles having the same number touch, <br>they join into one.
+				</p>
+			</span>
+			<span class="wrapper">
+				<div class = "lboard_section">
+					<h1>Scoreboard</h1>
+					<div class="lboard_mem">
+						<div class="rank">
+							<p><span style="color: black">1- </span></p>
+						</div>
+						<?php echo(html_score("s1"));?>
+					</div>
+					<div class="lboard_mem">
+						<div class="rank">
+							<p><span style="color: black">2- </span></p>
+						</div>
+						<?php echo(html_score("s2"));?>
+					</div>
+					<div class="lboard_mem">
+						<div class="rank">
+							<p><span style="color: black">3- </span></p>
+						</div>
+						<?php echo(html_score("s3"));?>
+					</div>
+				</div>
+			</span>
 
 			<script>
 				document.addEventListener('keyup', function(event) {
-				if (event.code == 'ArrowUp') {
-					window.location.href = "<?php echo("game2048.php?score=".getmovedscore(1)."&move=1&".getmoveresult(1));?>";
-				}
-				if (event.code == 'ArrowLeft') {
-					window.location.href = "<?php echo("game2048.php?score=".getmovedscore(4)."&move=1&".getmoveresult(4));?>";
+					console.log("hello");
+					let hi = <?php echo strcmp(getmoveresult(1), gettiles()) == 0 ? 'true' : 'false'; ?>;
+					console.log(hi);
+				if (event.code == 'ArrowUp' && (<?php echo strcmp(getmoveresult(1), gettiles()) == 0 ? 'false' : 'true'; ?> || <?php echo strcmp(getmovedscore(1), $_GET["score"]) == 0 ? 'false' : 'true'; ?>)) {
+					window.location.href = "<?php echo("game2048.php?score=".getmovedscore(1)."&s1=".$_GET["s1"]."&s2=".$_GET["s2"]."&s3=".$_GET["s3"]."&move=1&".getmoveresult(1));?>";
 					
 				}
-				if (event.code == 'ArrowRight') {
-					window.location.href = "<?php echo("game2048.php?score=".getmovedscore(2)."&move=1&".getmoveresult(2));?>";
+				if (event.code == 'ArrowLeft' && (<?php echo strcmp(getmoveresult(4), gettiles()) == 0 ? 'false' : 'true'; ?> || <?php echo strcmp(getmovedscore(4), $_GET["score"]) == 0 ? 'false' : 'true'; ?>)) {
+					window.location.href = "<?php echo("game2048.php?score=".getmovedscore(4)."&s1=".$_GET["s1"]."&s2=".$_GET["s2"]."&s3=".$_GET["s3"]."&move=1&".getmoveresult(4));?>";
 					
 				}
-				if (event.code == 'ArrowDown') {
-					window.location.href = "<?php echo("game2048.php?score=".getmovedscore(3)."&move=1&".getmoveresult(3));?>";
+				if (event.code == 'ArrowRight' && (<?php echo strcmp(getmoveresult(2), gettiles()) == 0 ? 'false' : 'true'; ?> || <?php echo strcmp(getmovedscore(2), $_GET["score"]) == 0 ? 'false' : 'true'; ?>)) {
+					window.location.href = "<?php echo("game2048.php?score=".getmovedscore(2)."&s1=".$_GET["s1"]."&s2=".$_GET["s2"]."&s3=".$_GET["s3"]."&move=1&".getmoveresult(2));?>";
+					
+				}
+				if (event.code == 'ArrowDown' && (<?php echo strcmp(getmoveresult(3), gettiles()) == 0 ? 'false' : 'true'; ?> || <?php echo strcmp(getmovedscore(3), $_GET["score"]) == 0 ? 'false' : 'true'; ?>)) {
+					window.location.href = "<?php echo("game2048.php?score=".getmovedscore(3)."&s1=".$_GET["s1"]."&s2=".$_GET["s2"]."&s3=".$_GET["s3"]."&move=1&".getmoveresult(3));?>";
 				}
 				});
 			</script>
-			
-			<!-- <div class="dpad">
-				<table>
-				<tr>
-					<th></th>
-					<th class="key"><a href="<?php echo("game2048.php?score=".getmovedscore(1)."&move=1&".getmoveresult(1)) ; ?>">■■</a></th>
-					<th></th>
-				</tr>
-				<tr>
-					<th class="key"><a href="<?php echo("game2048.php?score=".getmovedscore(4)."&move=1&".getmoveresult(4)) ; ?>">■■</a></th>
-					<th></th>
-					<th class="key"><a href="<?php echo("game2048.php?score=".getmovedscore(2)."&move=1&".getmoveresult(2)) ; ?>">■■</a></th>
-				</tr>
-				<tr>
-					<th></th>
-					<th class="key"><a href="<?php echo("game2048.php?score=".getmovedscore(3)."&move=1&".getmoveresult(3)) ; ?>">■■</a></th>
-					<th></th>
-				</tr>
-				</table>
-			</div> -->
-			<!-- <br/>
-			<footer class="sub">
-				<header>
-					<h1>
-						How to play
-					</h1>
-				</header>
-				<h2>Join numbers to get to the 2048 tile!</h2>
-				<p>Use arrow keys to move the tiles.
-				<br> When two tiles having the same number touch, <br>they join into one.
-				</p>
-				
-				<?php
-				//Displays an article if you have a 2048 or higher tile on the grid.
-				if(haswon()){
-				?>
-				<article class="hbox">
-					<header>
-						<h1>
-							Because you won
-						</h1>
-					</header>
-				</article>
-				<?php
+		</span>
+					
+		<?php
+		//Displays an article if you have a 2048 or higher tile on the grid.
+		if(haslost()){
+		?>
+		<div class = "popup open-popup" id="popupWon">
+			<h2>You lost!</h2>
+			<h3>Your score :</h3>
+			<?php echo($_GET["score"]) ;?>
+			<!-- <div><button type = "button" onclick="tryy()">Restart</button></div> -->
+		</div>
+		<script>
+				let backdrop = document.getElementById("backdrop");
+				let popUpWon = document.getElementById("popupWon");
+				backdrop.classList.add('blur');
+
+				console.log("hello");
+				let s1 = <?php $_GET["s1"]?>;
+				let s2 = <?php $_GET["s2"]?>;
+				let s3 = <?php $_GET["s3"]?>;
+				let score = <?php $_GET["score"]?>;
+				if(score > s3){
+					s3 = score;
+					if(s3 > s2){
+						s3 = s2;
+						s2 = score;
+						if(s2 > s1){
+							s2 = s1;
+							s1 = score;
+						}
+					}
 				}
-				?>
-			</footer>
-			<br/> -->
-		</body>
+				window.location.href = "<?php echo("game2048.php?score=0&s1=".s1."&s2=".s2."&s3=".s3."&".randomstart(1));?>";
+			
+		</script>
+		<?php
+		}
+		?>
+	</body>
 </html>
