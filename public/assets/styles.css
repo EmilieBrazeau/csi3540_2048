@@ -5,19 +5,195 @@ body{
     color: white;
 }
 
-hr{
-    width: 500px;
-}
-
-#grid{
-    width: 408px;
-    height: 408x;
-
+div.grid{
+    width: 426px;
+    height: 426px;
+    
     background-color: #323232;
     border: 10px solid #515151;
     margin: 0 auto;
+    padding: 0px;
+}
+
+th.g{
+    width: 90px;
+    height: 90px;
+    border: 6px solid #515151;
+
+    font-size: 40px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s linear;
+}
+
+/* Tile's colors palette: https://www.colorhexa.com/ffc0cb*/
+div.tile_2{
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s linear;
+    background-color: #ffd4db;
+    color: #ff5e7a;
+}
+
+div.tile_4{
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s linear;
+    background-color: #ffacbb;
+    color: #ff375a;
+}
+
+div.tile_8{
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s linear;
+    background-color: #ff859a;
+    color: white;
+}
+
+div.tile_16{
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s linear;
+    background-color: #ff5e7a;
+    color: white;
+}
+
+div.tile_32{
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s linear;
+    background-color: #ff375a;
+    color: white;
+}
+
+div.tile_64{
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s linear;
+    background-color: #ff0f39;
+    color: white;
+}
+
+div.tile_128{
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s linear;
+    background-color: #a7d8fd;
+    color: #043a63;
+}
+
+div.tile_256{
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s linear;
+    background-color: #33a1f6;
+    color: white;
+}
+
+div.tile_512{
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s linear;
+    background-color: #4fb48f;
+    color: white;
+}
+
+div.tile_1024{
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s linear;
+    background-color: #ba7cda;
+    color: white;
+}
+
+div.tile_2048{
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s linear;
+    background: linear-gradient(to bottom right, #ff8b94,  #ffb3ba, #ffdfba, #ffffba, #baffc9, #a8e6cf, #bae1ff, #dbdcff,  #eecbff);
+    color: black;
+}
+
+div.tile_max{
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s linear;
+    background-color: #e1aefa;
+    color: white;
 }
 
 .blur{
@@ -80,94 +256,4 @@ hr{
     color: #ff375a;
 }
 
-/* .tile{
-    width: 90px;
-    height: 90px;
-    border: 5px solid #ff99ab;
-
-    font-size: 40px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
-.tile{
-    width: 90px;
-    height: 90px;
-    border: 6px solid #515151;
-
-    font-size: 40px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.5s linear;
-}
-
-/* Tile's colors palette: https://www.colorhexa.com/ffc0cb*/
-.tile2{
-    background-color: #ffd4db;
-    color: #ff5e7a;
-}
-
-.tile4{
-    background-color: #ffacbb;
-    color: #ff375a;
-}
-
-.tile8{
-    background-color: #ff859a;
-    color: white;
-}
-
-.tile16{
-    background-color: #ff5e7a;
-    color: white;
-}
-
-.tile32{
-    background-color: #ff375a;
-    color: white;
-}
-
-.tile64{
-    background-color: #ff0f39;
-    color: white;
-}
-
-.tile128{
-    background-color: #a7d8fd;
-    color: #043a63;
-}
-
-.tile256{
-    background-color: #33a1f6;
-    color: white;
-}
-
-.tile512{
-    background-color: #4fb48f;
-    color: white;
-}
-
-.tile1024{
-    background-color: #ba7cda;
-    color: white;
-}
-
-.tile2048{
-    background: linear-gradient(to bottom right, #ff8b94,  #ffb3ba, #ffdfba, #ffffba, #baffc9, #a8e6cf, #bae1ff, #dbdcff,  #eecbff);
-    color: white;
-}
-
-.tile4096{
-    background-color: #e1aefa;
-    color: white;
-}
-
-.tile8192{
-    background-color: #73e0b8;
-    color: white;
-}
 
