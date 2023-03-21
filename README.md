@@ -21,9 +21,9 @@ Also, everytime the board changes from a slide, a new tile is added: a "2" is ad
 </br> Once you win, you will have a pop-up that will give you the choice of restarting a new game or continue playing.
 <img src="/docs/design_system/2048-won.jpg" width="40%"/>
 </br>
-The PHP version contains a leaderboard.
-<img src="/docs/design_system/gameOver.jpg" width="40%"/>
-<img src="/docs/design_system/updated-scoreboard.jpg" width="40%"/>
+The PHP version contains a leaderboard.</br>
+<img src="/docs/design_system/gameOver.jpg" width="70%"/>
+<img src="/docs/design_system/updated-scoreboard.jpg" width="70%"/>
 
 ## Documentation
 [Version JavaScript only](/docs/v1) </br>
