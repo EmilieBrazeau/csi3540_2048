@@ -316,7 +316,7 @@ function randomstart($indice){
 				$initialGrid = $initialGrid.$for_1.$for_2."=2&c";
 			}
 			else{
-				$initialGrid = $initialGrid.$for_1.$for_2."=".$for_1."&c";
+				$initialGrid = $initialGrid.$for_1.$for_2."=0&c";
 			}
 			if($pos == 15){
 				$finalGrid = substr($initialGrid, 0, -2);
@@ -419,6 +419,25 @@ function lm_score($row){
 	return $newlinescore ;
 }
 
+function tryAgain(){
+	$s1 = ($_GET["s1"]);
+	$s2 = ($_GET["s2"]);
+	$s3 = ($_GET["s3"]);
+	$score = ($_GET["score"]);
+	if($score > $s3){
+		$s3 = $score;
+		if($s3 > $s2){
+			$s3 = $s2;
+			$s2 = $score;
+			if($s2 > $s1){
+				$s2 = $s1;
+				$s1 = $score;
+			}
+		}
+	}
+	return [1 => $s1, 2 => $s2, 3 => $s3];
+}
+
 /*-----End of functions-----*/
 ?>
 <?php
@@ -458,7 +477,7 @@ if(isset($_GET["won"])){
 			<h2 class="score">
 				Score : <?php echo($_GET["score"]) ; ?>
 			</h2>
-			<a href="game2048.php">New game</a>
+			<a href="game2048.php" style="color:#ffacbb">Click here for new game </br> (warning: it will clear the scoreboard)</a>
 		</div>
 		<span id = "backdrop">
 			<span class="grid">
@@ -523,9 +542,6 @@ if(isset($_GET["won"])){
 
 			<script>
 				document.addEventListener('keyup', function(event) {
-					console.log("hello");
-					let hi = <?php echo strcmp(getmoveresult(1), gettiles()) == 0 ? 'true' : 'false'; ?>;
-					console.log(hi);
 				if (event.code == 'ArrowUp' && (<?php echo strcmp(getmoveresult(1), gettiles()) == 0 ? 'false' : 'true'; ?> || <?php echo strcmp(getmovedscore(1), $_GET["score"]) == 0 ? 'false' : 'true'; ?>)) {
 					window.location.href = "<?php echo("game2048.php?score=".getmovedscore(1)."&s1=".$_GET["s1"]."&s2=".$_GET["s2"]."&s3=".$_GET["s3"]."&move=1&".getmoveresult(1));?>";
 					
@@ -553,31 +569,22 @@ if(isset($_GET["won"])){
 			<h2>You lost!</h2>
 			<h3>Your score :</h3>
 			<?php echo($_GET["score"]) ;?>
-			<!-- <div><button type = "button" onclick="tryy()">Restart</button></div> -->
+			<div><button id = "restart" type = "button">Restart</button></div>
 		</div>
 		<script>
 				let backdrop = document.getElementById("backdrop");
 				let popUpWon = document.getElementById("popupWon");
 				backdrop.classList.add('blur');
 
-				console.log("hello");
-				let s1 = <?php $_GET["s1"]?>;
-				let s2 = <?php $_GET["s2"]?>;
-				let s3 = <?php $_GET["s3"]?>;
-				let score = <?php $_GET["score"]?>;
-				if(score > s3){
-					s3 = score;
-					if(s3 > s2){
-						s3 = s2;
-						s2 = score;
-						if(s2 > s1){
-							s2 = s1;
-							s1 = score;
-						}
-					}
-				}
-				window.location.href = "<?php echo("game2048.php?score=0&s1=".s1."&s2=".s2."&s3=".s3."&".randomstart(1));?>";
-			
+				let button = document.getElementById("restart");
+
+				button.addEventListener('click',function(){
+					console.log("hello from get over");
+					
+					window.location.href = "<?php echo("game2048.php?score=0&s1=".tryAgain()[1]."&s2=".tryAgain()[2]."&s3=".tryAgain()[3]."&".randomstart(1));?>";
+				});
+
+				
 		</script>
 		<?php
 		}
