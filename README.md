@@ -1,6 +1,6 @@
 # Game 2048
 Émilie Brazeau, 300209120
-</br>Assignment 2, CSI 3540 Structures et normes du Web
+</br>Assignments 2 & 3, CSI 3540 Structures et normes du Web
 </br>University of Ottawa, Winter 2023
 
 ## Instructions and objective
