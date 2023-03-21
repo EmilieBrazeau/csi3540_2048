@@ -23,6 +23,8 @@ Also, everytime the board changes from a slide, a new tile is added: a "2" is ad
 </br></br></br>
 The PHP version contains a leaderboard.</br></br>
 <img src="/docs/design_system/gameOver.jpg" width="70%"/></br></br>
+</br></br></br>
+**The grid contains uneven numbers because it was easier to loose and take screenshots.**</br></br>
 <img src="/docs/design_system/updated-scoreboard.jpg" width="70%"/>
 
 ## Documentation
