@@ -20,6 +20,12 @@ Also, everytime the board changes from a slide, a new tile is added: a "2" is ad
 <img src="/docs/design_system/finalState.jpg" width="40%"/>
 </br> Once you win, you will have a pop-up that will give you the choice of restarting a new game or continue playing.
 <img src="/docs/design_system/2048-won.jpg" width="40%"/>
+</br>
+The PHP version contains a leaderboard.
+<img src="/docs/design_system/gameOver.jpg" width="40%"/>
+<img src="/docs/design_system/updated-scoreboard.jpg" width="40%"/>
 
 ## Documentation
+[Version JavaScript only](/docs/v1) </br>
+[Version PHP](/app/models/game2048.php)</br></br>
 I documented some components of the implementation, the fonts and the color palette in the [design system](/docs/design_system.md).
